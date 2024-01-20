@@ -1,4 +1,18 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  output: "standalone",
+  experimental: {
+    scrollRestoration: true,
+  },
 
-module.exports = nextConfig
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;

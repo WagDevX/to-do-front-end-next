@@ -4,7 +4,7 @@ interface Props {
   handleSearch: (ev : any, title: string) => void;
 }
 
-export default function Header({handleSearch} : Props) {
+export default function Header() {
   return (
     <header className="flex h-14 w-full gap-4 bg-white px-6 py-3 shadow-md">
       <Logo />
@@ -17,7 +17,6 @@ export default function Header({handleSearch} : Props) {
           <input
             type="text"
             id="default-search"
-            onChange={(ev) => handleSearch(ev, ev.target.value)}
             className="block w-full rounded-sm border border-zinc-300 p-1 ps-3 text-sm text-gray-900 shadow-sm focus:border-zinc-500 focus:outline-none focus:ring-zinc-500"
             placeholder="Pesquisar Notas"
             required

@@ -1,14 +1,20 @@
+import { Suspense } from "react";
 import { getNotes } from "./lib/actions";
-import { NoteType } from "./lib/definitions";
-import Logo from "./ui/logo/logo";
 import HomeWrapper from "./ui/notes/homeWrapper";
 import CreateNoteTaskBox from "./ui/taskBox/createTaskBox";
+import Header from "./ui/notes/header";
+import Loading from "./ui/notes/loading";
 
-export default async function Home() {
-  const notes = await getNotes();
+export default  function Home() {
   return (
     <main className="flex min-h-[100vh] flex-col bg-gray-100">
-      <HomeWrapper notes={notes} />
+      <Header />
+      <div className="mt-10 flex justify-center sm:px-12">
+        <CreateNoteTaskBox />
+      </div>
+      <Suspense fallback={<Loading />}>
+      <HomeWrapper />
+      </Suspense>
     </main>
   );
 }

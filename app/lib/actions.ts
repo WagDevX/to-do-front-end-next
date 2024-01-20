@@ -87,6 +87,7 @@ export async function editNote(formData: FormData) {
 }
 
 export async function getNotes() {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   try {
     await mongooseConnect();
     const response = await Note.find({});

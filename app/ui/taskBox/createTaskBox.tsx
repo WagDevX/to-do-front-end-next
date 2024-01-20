@@ -4,7 +4,7 @@ import FavoriteIcon from "../icons/favorite";
 import { useRef } from "react";
 import AddIcon from "../icons/add";
 
-export default function CreateNoteTaskBox() {
+export default async function CreateNoteTaskBox() {
   const ref = useRef<HTMLFormElement>(null);
   return (
     <>
@@ -32,7 +32,7 @@ export default function CreateNoteTaskBox() {
           />
         </div>
         <div className="flex justify-end px-6 pb-6">
-          <button className="flex gap-2 text-neutral-600">
+          <button type="submit" className="flex gap-2 text-neutral-600">
             <AddIcon />
           </button>
         </div>

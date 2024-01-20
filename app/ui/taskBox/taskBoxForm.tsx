@@ -30,6 +30,7 @@ export default function TaskBoxForm({ note, setBackToDefault }: Props) {
   return (
     <>
       <form
+        style={{backgroundColor : note.color}}
         action={(formData) => {
           editNote(formData);
           setBackToDefault();
@@ -39,6 +40,7 @@ export default function TaskBoxForm({ note, setBackToDefault }: Props) {
         <div className="flex justify-between border-b-2 px-6 pb-2 pt-5">
           <input type="hidden" name="_id" value={note._id} />
           <input
+            style={{backgroundColor : note.color}}
             type="text"
             name="title"
             value={title}
@@ -55,6 +57,7 @@ export default function TaskBoxForm({ note, setBackToDefault }: Props) {
         </div>
         <div className="flex h-full flex-col justify-between px-6 py-5">
           <textarea
+            style={{backgroundColor : note.color}}
             name="description"
             value={description}
             onChange={(ev) => setDescription(ev.target.value)}
@@ -76,13 +79,13 @@ export default function TaskBoxForm({ note, setBackToDefault }: Props) {
                 <TintIcon />
               </button>
               <Tooltip
+                id={`${note._id}`}
                 isOpen={isOpen}
                 clickable={true}
                 place="bottom"
-                id={`${note._id}`}
                 disableStyleInjection={true}
               >
-                <EditColorToolip />
+                <EditColorToolip id={note._id} setBackToDefault={setBackToDefault}/>
               </Tooltip>
             </div>
             <button className="text-neutral-600" type="submit">

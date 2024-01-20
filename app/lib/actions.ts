@@ -36,7 +36,7 @@ export async function createNote(formData: FormData) {
   });
 
   try {
-    mongooseConnect();
+    await mongooseConnect();
     await Note.create({
       title: title,
       description: description,
@@ -65,7 +65,7 @@ export async function editNote(formData: FormData) {
   });
 
   try {
-    mongooseConnect();
+    await mongooseConnect();
     await Note.updateOne(
       { _id: id },
       {
@@ -88,7 +88,7 @@ export async function editNote(formData: FormData) {
 
 export async function getNotes() {
   try {
-    mongooseConnect();
+    await mongooseConnect();
     const response = await Note.find({});
     const data = JSON.parse(JSON.stringify(response));
     return data.map((note: NoteType) => note);
@@ -100,7 +100,7 @@ export async function getNotes() {
 
 export async function deleteNote(_id: string) {
   try {
-    mongooseConnect();
+    await mongooseConnect();
     await Note.findOneAndDelete({ _id: _id });
   } catch (error) {
     console.log(error);
@@ -113,7 +113,7 @@ export async function deleteNote(_id: string) {
 export async function favoriteNote(_id: string, favorite: boolean) {
   try {
     console;
-    mongooseConnect();
+    await mongooseConnect();
     await Note.updateOne({ _id: _id }, { favorited: favorite });
   } catch (error) {
     console.log(error);
@@ -122,3 +122,17 @@ export async function favoriteNote(_id: string, favorite: boolean) {
 
   revalidatePath("/");
 }
+
+export async function setColor(_id: string, color: string) {
+  try {
+    console;
+    await mongooseConnect();
+    await Note.updateOne({ _id: _id }, { color: color });
+  } catch (error) {
+    console.log(error);
+    // return { messsage: "Database error: Failed to delete note" };
+  }
+
+  revalidatePath("/");
+}
+

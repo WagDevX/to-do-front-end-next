@@ -32,8 +32,8 @@ export default function TaskBox({ note }: Props) {
       {editNote ? (
         <TaskBoxForm note={note} setBackToDefault={handleSetBacktoDefault} />
       ) : (
-        <div className="aspect-[6.5/7.3] flex-col rounded-3xl bg-white shadow-lg">
-          <div className="flex justify-between border-b-2 px-6 pb-2 pt-5">
+        <div style={{backgroundColor : note.color}} className={`aspect-[6.5/7.3] flex-col rounded-3xl bg-white ${note.favorited && "shadow-lg"} `}>
+          <div className={`flex justify-between border-b-2 ${note.color ? "border-white" : ""} px-6 pb-2 pt-5`}>
             <h1 className="font-bold text-neutral-600">{note.title}</h1>
             <button
               onClick={() =>

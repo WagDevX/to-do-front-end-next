@@ -82,6 +82,7 @@ export default function TaskBoxForm({ note, setBackToDefault }: Props) {
                 id={`${note._id}`}
                 isOpen={isOpen}
                 clickable={true}
+                positionStrategy="absolute"
                 place="bottom"
                 disableStyleInjection={true}
               >

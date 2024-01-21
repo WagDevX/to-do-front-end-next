@@ -1,4 +1,6 @@
+"use client"
 import { setColor } from "@/app/lib/actions";
+import { useTransition } from "react";
 
 interface Props {
   id: string
@@ -6,8 +8,9 @@ interface Props {
 }
 
 
-export default function EditColorToolip({id, setBackToDefault} : Props) {
-  const colors = [
+export default async function EditColorToolip({id , setBackToDefault} : Props) {
+  const [ispending, startTransition] = useTransition();
+    const colors = [
     "#BAE2FF",
     "#B9FFDD",
     "#FFE8AC",
@@ -25,7 +28,6 @@ export default function EditColorToolip({id, setBackToDefault} : Props) {
   const handleChangeColor = async (ev : any, id: string, color: string) => {
     ev.preventDefault();
     await setColor(id, color);
-    setBackToDefault();
   }
 
   return (
@@ -33,10 +35,9 @@ export default function EditColorToolip({id, setBackToDefault} : Props) {
       <div className="flex w-full gap-3 rounded-lg border-[1px] border-zinc-300 bg-white p-2 shadow-sm z-100">
         {colors.map((color, index) => (
           <button
-            onClick={(ev) => handleChangeColor(ev,id, color)}
+            onClick={(ev) => startTransition(() => handleChangeColor(ev,id!, color))}
             key={index}
             style={{ backgroundColor: color }}
-            // eslint-disable-next-line tailwindcss/no-custom-classname, tailwindcss/classnames-order
             className={`size-8 rounded-full`}
           ></button>
         ))}

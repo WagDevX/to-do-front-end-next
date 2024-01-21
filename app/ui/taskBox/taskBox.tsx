@@ -13,7 +13,7 @@ interface Props {
   note: NoteType;
 }
 
-export default function TaskBox({ note }: Props) {
+export default async function TaskBox({ note }: Props) {
   // eslint-disable-next-line no-unused-vars
   const [isPending, startTransition] = useTransition();
   const [editNote, setEditNote] = useState<boolean>(false);
@@ -60,7 +60,7 @@ export default function TaskBox({ note }: Props) {
                 </button>
               </div>
               <button
-                onClick={() => startTransition(() => deleteNote(note._id))}
+                onClick={() => startTransition(async() => await deleteNote(note._id))}
               >
                 <DeleteIcon />
               </button>

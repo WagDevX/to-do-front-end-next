@@ -11,7 +11,7 @@ function Submit() {
   const { pending } = useFormStatus();
   return (
     <button
-      about="Criar tarefa"
+      aria-label="Criar nota"
       type="submit"
       disabled={pending}
       className="flex gap-2 text-neutral-600"
@@ -50,6 +50,7 @@ export default function CreateNoteTaskBox() {
             className="mr-5 w-full truncate font-bold text-neutral-600 focus:outline-none"
           />
           <button
+            aria-label="Favoritar nota"
             className="flex items-center"
             onClick={(ev) => handleFavorite(ev)}
           >

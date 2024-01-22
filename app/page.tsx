@@ -1,11 +1,18 @@
 import { Suspense } from "react";
-import { getNotes } from "./lib/actions";
-import HomeWrapper from "./ui/notes/homeWrapper";
+import NotesWrapper from "./ui/notes/notesWrapper";
 import CreateNoteTaskBox from "./ui/taskBox/createTaskBox";
 import Header from "./ui/notes/header";
 import Loading from "./ui/notes/loading";
 
-export default  function Home() {
+export default function Home({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+}) {
+  const query = searchParams?.query || "";
   return (
     <main className="flex min-h-[100vh] flex-col bg-gray-100">
       <Header />
@@ -13,7 +20,7 @@ export default  function Home() {
         <CreateNoteTaskBox />
       </div>
       <Suspense fallback={<Loading />}>
-      <HomeWrapper />
+        <NotesWrapper query={query} />
       </Suspense>
     </main>
   );

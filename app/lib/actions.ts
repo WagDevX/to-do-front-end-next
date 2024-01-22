@@ -22,11 +22,12 @@ const CreateNote = FormSchema.omit({
 });
 
 const EditNote = FormSchema.omit({
+  color: true,
   createdAt: true,
   updatedAt: true,
 });
 
-export async function createNote(formData: FormData) {
+export default async function createNote(formData: FormData) {
   // eslint-disable-next-line no-unused-vars
   const { title, description, color } = CreateNote.parse({
     title: formData.get("title"),
@@ -37,6 +38,7 @@ export async function createNote(formData: FormData) {
 
   try {
     await mongooseConnect();
+
     await Note.create({
       title: title,
       description: description,
@@ -57,11 +59,10 @@ export async function createNote(formData: FormData) {
 
 export async function editNote(formData: FormData) {
   // eslint-disable-next-line no-unused-vars
-  const { title, description, color, id } = EditNote.parse({
+  const { title, description, id } = EditNote.parse({
     title: formData.get("title"),
     description: formData.get("description"),
     id: formData.get("_id"),
-    color: "",
   });
 
   try {
@@ -71,7 +72,6 @@ export async function editNote(formData: FormData) {
       {
         title: title,
         description: description,
-        color: color,
       }
     )
       .then(() => {})
@@ -86,11 +86,15 @@ export async function editNote(formData: FormData) {
   revalidatePath("/");
 }
 
-export async function getNotes() {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+export async function getFilteredNotes(query: string) {
   try {
+    let response;
     await mongooseConnect();
-    const response = await Note.find({});
+    if (query) {
+      response = await Note.find({ title: { $regex: query, $options: "i" } });
+    } else {
+      response = await Note.find({});
+    }
     const data = JSON.parse(JSON.stringify(response));
     return data.map((note: NoteType) => note);
   } catch (error) {
@@ -136,4 +140,3 @@ export async function setColor(_id: string, color: string) {
 
   revalidatePath("/");
 }
-

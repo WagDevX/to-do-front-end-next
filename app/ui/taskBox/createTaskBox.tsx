@@ -3,16 +3,18 @@ import { createNote } from "@/app/lib/actions";
 import FavoriteIcon from "../icons/favorite";
 import { useRef } from "react";
 import AddIcon from "../icons/add";
+import { useFormStatus } from "react-dom";
 
-export default async function CreateNoteTaskBox() {
+export default function CreateNoteTaskBox() {
+  const { pending } = useFormStatus();
   const ref = useRef<HTMLFormElement>(null);
   return (
     <>
       <form
         ref={ref}
         action={async (formData) => {
-          ref.current?.reset();
           await createNote(formData);
+          ref.current?.reset();
         }}
         className="flex w-full flex-col border-zinc-300 bg-white shadow transition-all duration-100 sm:max-w-full sm:rounded-3xl md:aspect-[3.9/1.1] lg:aspect-[5.2/1.1] lg:max-w-[40vw] lg:rounded-sm"
       >
@@ -32,7 +34,12 @@ export default async function CreateNoteTaskBox() {
           />
         </div>
         <div className="flex justify-end px-6 pb-6">
-          <button type="submit" className="flex gap-2 text-neutral-600">
+          <button
+            type="submit"
+            disabled={pending}
+            className="flex gap-2 text-neutral-600"
+          >
+            {pending ? <h1>Criando...</h1> : ""}
             <AddIcon />
           </button>
         </div>

@@ -1,16 +1,16 @@
-"use client"
+"use client";
 import { setColor } from "@/app/lib/actions";
 import { useTransition } from "react";
 
-interface Props {
-  id: string
+type Props = {
+  id: string;
   setBackToDefault: () => void;
-}
+};
 
-
-export default async function EditColorToolip({id , setBackToDefault} : Props) {
+export default function EditColorToolip({ id, setBackToDefault }: Props) {
+  // eslint-disable-next-line no-unused-vars
   const [ispending, startTransition] = useTransition();
-    const colors = [
+  const colors = [
     "#BAE2FF",
     "#B9FFDD",
     "#FFE8AC",
@@ -25,17 +25,20 @@ export default async function EditColorToolip({id , setBackToDefault} : Props) {
     "#A99A7C",
   ];
 
-  const handleChangeColor = async (ev : any, id: string, color: string) => {
+  const handleChangeColor = async (ev: any, id: string, color: string) => {
     ev.preventDefault();
     await setColor(id, color);
-  }
+    setBackToDefault();
+  };
 
   return (
     <>
-      <div className="flex w-full gap-3 rounded-lg border-[1px] border-zinc-300 bg-white p-2 shadow-sm z-100">
+      <div className="z-50 w-full gap-3 rounded-lg border-[1px] border-zinc-300 bg-white p-2 shadow-sm sm:grid sm:grid-cols-6 lg:flex ">
         {colors.map((color, index) => (
           <button
-            onClick={(ev) => startTransition(() => handleChangeColor(ev,id!, color))}
+            onClick={(ev) =>
+              startTransition(() => handleChangeColor(ev, id!, color))
+            }
             key={index}
             style={{ backgroundColor: color }}
             className={`size-8 rounded-full`}

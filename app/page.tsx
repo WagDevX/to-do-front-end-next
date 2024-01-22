@@ -1,8 +1,8 @@
 import { Suspense } from "react";
-import NotesWrapper from "./ui/notes/notesWrapper";
-import CreateNoteTaskBox from "./ui/taskBox/createTaskBox";
-import Header from "./ui/notes/header";
-import Loading from "./ui/notes/loading";
+import NotesWrapper from "./ui/wrapper/notesWrapper";
+import CreateNoteTaskBox from "./ui/noteBox/createTaskBox";
+import Header from "./ui/header/header";
+import Loading from "./ui/wrapper/loading";
 
 export default function Home({
   searchParams,

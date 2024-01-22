@@ -102,7 +102,7 @@ export default function NoteBoxForm({ note, setBackToDefault }: Props) {
                 place="bottom-start"
                 disableStyleInjection={true}
               >
-                <EditColorToolip id={note._id} />
+                <EditColorToolip note={note} />
               </Tooltip>
             </div>
             <Submit />

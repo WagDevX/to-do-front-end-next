@@ -43,7 +43,7 @@ export default function SearchColorToolip() {
       <div className="z-50 w-full items-center justify-center gap-3 rounded-lg border-[1px] border-zinc-300 bg-white p-2 shadow-sm sm:grid sm:grid-cols-6 lg:flex ">
         {colors.map((color, index) => (
           <button
-            about="Editar cor da nota"
+            about="Procuar nota pela cor"
             onClick={(ev) => handleSearchColor(color)}
             key={index}
             style={{ backgroundColor: color }}

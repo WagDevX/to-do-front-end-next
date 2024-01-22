@@ -27,22 +27,20 @@ const EditNote = FormSchema.omit({
   updatedAt: true,
 });
 
-export async function createNote(formData: FormData) {
+export async function createNote(formData: FormData, isFavorited: boolean) {
   // eslint-disable-next-line no-unused-vars
   const { title, description, color } = CreateNote.parse({
     title: formData.get("title"),
     description: formData.get("description"),
-    favorited: false,
     color: "",
   });
-
   try {
     await mongooseConnect();
 
     await Note.create({
       title: title,
       description: description,
-      favorited: false,
+      favorited: isFavorited,
       color: color,
     })
       .then(() => {})
@@ -91,10 +89,16 @@ export async function getFilteredNotes(query: string, color: string) {
     let response;
     await mongooseConnect();
     if (query || color) {
-      response = await Note.find({
-        title: { $regex: query, $options: "i" },
-        color: color ?? "",
-      });
+      if (color) {
+        response = await Note.find({
+          title: { $regex: query, $options: "i" },
+          color: color,
+        });
+      } else {
+        response = await Note.find({
+          title: { $regex: query, $options: "i" },
+        });
+      }
     } else {
       response = await Note.find({});
     }

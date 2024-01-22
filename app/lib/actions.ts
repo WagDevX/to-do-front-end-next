@@ -86,12 +86,15 @@ export async function editNote(formData: FormData) {
   revalidatePath("/");
 }
 
-export async function getFilteredNotes(query: string) {
+export async function getFilteredNotes(query: string, color: string) {
   try {
     let response;
     await mongooseConnect();
-    if (query) {
-      response = await Note.find({ title: { $regex: query, $options: "i" } });
+    if (query || color) {
+      response = await Note.find({
+        title: { $regex: query, $options: "i" },
+        color: color ?? "",
+      });
     } else {
       response = await Note.find({});
     }

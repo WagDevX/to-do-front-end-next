@@ -1,3 +1,4 @@
+import ColorFilter from "../colorFilter/colorFilter";
 import Logo from "../logo/logo";
 import Search from "../search/search";
 
@@ -9,6 +10,7 @@ export default function Header() {
         <div className="flex items-center gap-4 border-zinc-300 ">
           <h2 className="text-sm text-slate-600">CoreNotes</h2>
           <Search />
+          <ColorFilter />
         </div>
         <button about="Deletar todas as notas">
           <svg

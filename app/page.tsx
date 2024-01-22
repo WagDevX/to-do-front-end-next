@@ -9,11 +9,13 @@ export default function Home({
 }: {
   searchParams?: {
     query?: string;
+    color?: string;
     page?: string;
   };
 }) {
   const query = searchParams?.query || "";
-  const keyString = `search=${searchParams?.query}`;
+  const color = searchParams?.color || "";
+  const keyString = `search=${query}?color=${color}`;
   return (
     <main className="flex min-h-[100vh] flex-col bg-gray-100">
       <Header />
@@ -21,7 +23,7 @@ export default function Home({
         <CreateNoteTaskBox />
       </div>
       <Suspense key={keyString} fallback={<Loading />}>
-        <NotesWrapper query={query} />
+        <NotesWrapper query={query} color={color} />
       </Suspense>
     </main>
   );

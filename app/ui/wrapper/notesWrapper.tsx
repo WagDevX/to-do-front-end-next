@@ -2,8 +2,13 @@ import { NoteType } from "@/app/lib/definitions";
 import TaskBox from "../noteBox/noteBox";
 import { getFilteredNotes } from "@/app/lib/actions";
 
-export default async function NotesWrapper({ query }: { query: string }) {
-  const notes = await getFilteredNotes(query);
+type Props = {
+  query: string;
+  color: string;
+};
+
+export default async function NotesWrapper({ query, color }: Props) {
+  const notes = await getFilteredNotes(query, color);
   const nonFavoriteNotes = notes.filter(
     (note: NoteType) => note.favorited === false
   );
@@ -18,7 +23,7 @@ export default async function NotesWrapper({ query }: { query: string }) {
         <>
           <div className="mt-10 flex flex-col items-center gap-10 ">
             <h1 className="text-center text-xl font-bold text-zinc-300">
-              Nenhum resultado encontrado
+              Nenhum nota encontrada =(
             </h1>
             <div>
               <svg

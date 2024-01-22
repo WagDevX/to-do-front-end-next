@@ -13,6 +13,7 @@ export default function ColorFilter() {
   return (
     <>
       <button
+        aria-label="Filtrar nota por cor"
         data-tooltip-id="search-color"
         onClick={() => handleOpenTooltip()}
         about="Filtrar notas por cor"

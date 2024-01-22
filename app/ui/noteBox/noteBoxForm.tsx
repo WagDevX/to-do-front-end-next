@@ -21,7 +21,7 @@ function Submit() {
   const { pending } = useFormStatus();
   return (
     <button
-      about="Salvar alterações"
+      aria-label="Salvar alterações"
       type="submit"
       disabled={pending}
       className="flex gap-2 text-neutral-600"
@@ -63,6 +63,7 @@ export default function NoteBoxForm({ note, setBackToDefault }: Props) {
             className="font-bold text-neutral-600"
           ></input>
           <button
+            aria-label="Favoritar nota"
             onClick={() =>
               startTransition(() => favoriteNote(note._id, !note.favorited))
             }
@@ -81,12 +82,14 @@ export default function NoteBoxForm({ note, setBackToDefault }: Props) {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <button
+                aria-label="Editar nota"
                 disabled
                 className="rounded-full p-1 transition-all duration-150 "
               >
                 <EditIcon />
               </button>
               <button
+                aria-label="Editar cor da nota"
                 onClick={(ev) => handleOpenTooltip(ev)}
                 data-tooltip-id={`${note._id}`}
                 className="rounded-full p-1.5 transition-all duration-150 "

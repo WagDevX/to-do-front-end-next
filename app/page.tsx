@@ -13,7 +13,7 @@ export default function Home({
   const color = searchParams?.color || "";
   const keyString = `search=${query}?color=${color}`;
   return (
-    <main className="flex min-h-[100vh] flex-col bg-gray-100 pb-10">
+    <main className="flex min-h-[100vh] flex-col bg-gray-100 pb-20">
       <Header />
       <div className="mt-28 flex justify-center sm:px-12">
         <CreateNoteTaskBox />

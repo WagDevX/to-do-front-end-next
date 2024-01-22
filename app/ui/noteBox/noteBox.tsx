@@ -56,8 +56,11 @@ export default function NoteBox({ note }: Props) {
           <div
             className={`flex justify-between border-b-2 ${note.color ? "border-white" : ""} px-6 pb-2 pt-5`}
           >
-            <h1 className="font-bold text-neutral-600">{note.title}</h1>
-            <button onClick={() => handleFavorite()}>
+            <h1 className="font-bold text-neutral-800">{note.title}</h1>
+            <button
+              aria-label="Favoritar nota"
+              onClick={() => handleFavorite()}
+            >
               {isPendingFavorite ? (
                 <SpinnerLoader size={20} />
               ) : (
@@ -66,18 +69,20 @@ export default function NoteBox({ note }: Props) {
             </button>
           </div>
           <div className="flex h-full flex-col justify-between px-6 py-5">
-            <p className="mb-4 overflow-auto whitespace-pre-line	text-xs text-neutral-600">
+            <p className="mb-4 overflow-auto whitespace-pre-line text-xs	font-normal text-neutral-800">
               {note.description}
             </p>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <button
+                  aria-label="Editar nota"
                   onClick={(ev) => handleEditNote(ev)}
                   className="rounded-full p-1 transition-all duration-150 hover:bg-orange-400/50"
                 >
                   <EditIcon />
                 </button>
                 <button
+                  aria-label="Editar cor da nota"
                   onClick={(ev) => handleOpenTooltip(ev)}
                   data-tooltip-id={`${note._id}`}
                   className="rounded-full p-1.5 transition-all duration-150 "
@@ -97,6 +102,7 @@ export default function NoteBox({ note }: Props) {
                 </Tooltip>
               </div>
               <button
+                aria-label="Deletar nota"
                 disabled={isPendingDelete}
                 onClick={() =>
                   startTransitionDelete(async () => await deleteNote(note._id))

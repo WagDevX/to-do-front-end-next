@@ -34,6 +34,7 @@ export default function CreateNoteTaskBox() {
 
   return (
     <>
+      {" "}
       <form
         ref={ref}
         action={async (formData) => {

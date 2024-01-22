@@ -18,7 +18,6 @@ export default function ColorFilter() {
         about="Filtrar notas por cor"
         className="flex gap-2 text-sm text-slate-600"
       >
-        Filtrar cor
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -39,7 +38,7 @@ export default function ColorFilter() {
         isOpen={isOpen}
         clickable={true}
         positionStrategy="absolute"
-        offset={0}
+        offset={5}
         place="bottom-start"
         disableStyleInjection={true}
       >

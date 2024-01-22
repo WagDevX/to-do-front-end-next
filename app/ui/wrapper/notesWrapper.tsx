@@ -48,22 +48,30 @@ export default async function NotesWrapper({ query, color }: Props) {
       )}
       {notes.length > 0 && (
         <>
-          <h1 className="mt-10 pl-6 text-base text-zinc-700 sm:mx-12 lg:mx-24">
-            Favoritas
-          </h1>
-          <div className="mt-2 grid h-full gap-10 sm:mx-12 sm:grid-cols-1 md:grid-cols-2 lg:mx-24 lg:grid-cols-3">
-            {favoriteNotes.map((note: NoteType) => {
-              return <TaskBox key={note._id} note={note} />;
-            })}
-          </div>
-          <h1 className="mt-10 pl-6 text-base text-zinc-700 sm:mx-12 lg:mx-24">
-            Outras
-          </h1>
-          <div className="mb-20 mt-2 grid gap-10 sm:mx-12 sm:grid-cols-1 md:grid-cols-2 lg:mx-24 lg:grid-cols-3">
-            {nonFavoriteNotes.map((note: NoteType) => {
-              return <TaskBox key={note._id} note={note} />;
-            })}
-          </div>
+          {favoriteNotes.length > 0 && (
+            <>
+              <h1 className="mt-10 pl-6 text-base text-zinc-700 sm:mx-12 md:mx-12 lg:mx-24">
+                Favoritas
+              </h1>
+              <div className="mt-2 grid h-full gap-10 sm:mx-12 sm:grid-cols-1 md:grid-cols-2 lg:mx-24 lg:grid-cols-3">
+                {favoriteNotes.map((note: NoteType) => {
+                  return <TaskBox key={note._id} note={note} />;
+                })}
+              </div>
+            </>
+          )}
+          {nonFavoriteNotes.length > 0 && (
+            <>
+              <h1 className="mt-10 pl-6 text-base text-zinc-700 sm:mx-12 lg:mx-24">
+                Outras
+              </h1>
+              <div className="mb-20 mt-2 grid gap-10 sm:mx-12 sm:grid-cols-1 md:grid-cols-2 lg:mx-24 lg:grid-cols-3">
+                {nonFavoriteNotes.map((note: NoteType) => {
+                  return <TaskBox key={note._id} note={note} />;
+                })}
+              </div>
+            </>
+          )}
         </>
       )}
     </>

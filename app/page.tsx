@@ -7,19 +7,15 @@ import Loading from "./ui/wrapper/loading";
 export default function Home({
   searchParams,
 }: {
-  searchParams?: {
-    query?: string;
-    color?: string;
-    page?: string;
-  };
+  searchParams?: { query?: string; color?: string; page?: string };
 }) {
   const query = searchParams?.query || "";
   const color = searchParams?.color || "";
   const keyString = `search=${query}?color=${color}`;
   return (
-    <main className="flex min-h-[100vh] flex-col bg-gray-100">
+    <main className="flex min-h-[100vh] flex-col bg-gray-100 pb-10">
       <Header />
-      <div className="mt-10 flex justify-center sm:px-12">
+      <div className="mt-28 flex justify-center sm:px-12">
         <CreateNoteTaskBox />
       </div>
       <Suspense key={keyString} fallback={<Loading />}>

@@ -16,17 +16,17 @@ export default function Search() {
     replace(`${pathName}?${params.toString()}`);
   }, 300);
   return (
-    <div className="relative w-[40vw]">
+    <div className="relative flex w-[40vw]">
       <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3 "></div>
       <input
         type="text"
         id="default-search"
         defaultValue={searchParams.get("query")?.toString()}
         onChange={(ev) => handleSearch(ev.target.value)}
-        className="block w-full rounded-sm border border-zinc-300 p-1 ps-3 text-sm text-gray-900 shadow-sm focus:border-zinc-500 focus:outline-none focus:ring-zinc-500"
+        className="block w-full rounded-sm border border-zinc-300 p-1 ps-3 text-gray-900 shadow-sm focus:border-zinc-500 focus:outline-none focus:ring-zinc-500 sm:text-xs lg:text-sm"
         placeholder="Pesquisar Notas"
       />
-      <div className="absolute bottom-0 end-[0] rounded-lg  p-2 text-sm font-medium text-white focus:outline-none">
+      <div className="absolute end-[0] self-center rounded-lg p-2  text-sm font-medium text-white focus:outline-none">
         <svg
           width="13"
           height="14"

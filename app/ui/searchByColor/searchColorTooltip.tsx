@@ -3,6 +3,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 export default function SearchColorToolip() {
+  // eslint-disable-next-line no-unused-vars
   const [selectedColor, setSelectedColor] = useState<string>("");
   const searchParams = useSearchParams();
   const pathName = usePathname();
@@ -22,17 +23,20 @@ export default function SearchColorToolip() {
     "#979797",
     "#A99A7C",
   ];
+  const params = new URLSearchParams(searchParams);
 
   const handleSearchColor = (color: string) => {
     setSelectedColor(color);
-    const params = new URLSearchParams(searchParams);
     if (color) {
       params.set("color", color);
     } else {
       params.delete("color");
     }
     replace(`${pathName}?${params.toString()}`);
+    params.get("color");
   };
+
+  const colorParam = params.get("color");
 
   return (
     <>
@@ -43,7 +47,7 @@ export default function SearchColorToolip() {
             onClick={(ev) => handleSearchColor(color)}
             key={index}
             style={{ backgroundColor: color }}
-            className={`flex size-8 items-center justify-center rounded-full ${selectedColor !== "" && selectedColor === color ? "border-2 border-slate-600" : ""}`}
+            className={`flex size-8 items-center justify-center rounded-full ${colorParam !== "" && colorParam === color ? "border-2 border-slate-600" : ""}`}
           >
             {color === "" && (
               <div className=" text-slate-600">
@@ -63,7 +67,7 @@ export default function SearchColorToolip() {
                 </svg>
               </div>
             )}
-            {selectedColor !== "" && selectedColor === color && (
+            {colorParam !== "" && colorParam === color && (
               <div className=" text-slate-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

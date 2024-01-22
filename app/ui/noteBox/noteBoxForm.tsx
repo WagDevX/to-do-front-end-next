@@ -32,7 +32,6 @@ function Submit() {
 }
 
 export default function NoteBoxForm({ note, setBackToDefault }: Props) {
-  // eslint-disable-next-line no-unused-vars
   const [isPending, startTransition] = useTransition();
   const [title, setTitle] = useState<string>(note.title);
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -103,10 +102,7 @@ export default function NoteBoxForm({ note, setBackToDefault }: Props) {
                 place="bottom-start"
                 disableStyleInjection={true}
               >
-                <EditColorToolip
-                  id={note._id}
-                  setBackToDefault={setBackToDefault}
-                />
+                <EditColorToolip id={note._id} />
               </Tooltip>
             </div>
             <Submit />

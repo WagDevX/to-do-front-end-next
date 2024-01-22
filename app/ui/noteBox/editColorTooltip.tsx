@@ -1,14 +1,14 @@
 "use client";
 import { setColor } from "@/app/lib/actions";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
+import SpinnerLoader from "../loader/spinner-loader";
 
 type Props = {
   id: string;
-  setBackToDefault: () => void;
 };
 
-export default function EditColorToolip({ id, setBackToDefault }: Props) {
-  // eslint-disable-next-line no-unused-vars
+export default function EditColorToolip({ id }: Props) {
+  const [colorChanging, setColorChanging] = useState<string>("");
   const [ispending, startTransition] = useTransition();
   const colors = [
     "#BAE2FF",
@@ -25,25 +25,32 @@ export default function EditColorToolip({ id, setBackToDefault }: Props) {
     "#A99A7C",
   ];
 
-  const handleChangeColor = async (ev: any, id: string, color: string) => {
+  const handleChangeColor = (ev: any, id: string, color: string) => {
+    setColorChanging(color);
     ev.preventDefault();
-    await setColor(id, color);
-    setBackToDefault();
+    startTransition(async () => await setColor(id, color));
   };
 
   return (
     <>
-      <div className="z-50 w-full gap-3 rounded-lg border-[1px] border-zinc-300 bg-white p-2 shadow-sm sm:grid sm:grid-cols-6 lg:flex ">
+      <div className="z-50 w-full items-center justify-center gap-3 rounded-lg border-[1px] border-zinc-300 bg-white p-2 shadow-sm sm:grid sm:grid-cols-6 lg:flex ">
         {colors.map((color, index) => (
           <button
             about="Editar cor da nota"
-            onClick={(ev) =>
-              startTransition(() => handleChangeColor(ev, id!, color))
-            }
+            disabled={ispending}
+            onClick={(ev) => handleChangeColor(ev, id!, color)}
             key={index}
-            style={{ backgroundColor: color }}
-            className={`size-8 rounded-full`}
-          ></button>
+            style={
+              ispending && colorChanging === color
+                ? {}
+                : { backgroundColor: color }
+            }
+            className="size-8 rounded-full"
+          >
+            {ispending && colorChanging === color && (
+              <SpinnerLoader size={30} />
+            )}
+          </button>
         ))}
       </div>
     </>

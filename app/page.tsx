@@ -13,13 +13,14 @@ export default function Home({
   };
 }) {
   const query = searchParams?.query || "";
+  const keyString = `search=${searchParams?.query}`;
   return (
     <main className="flex min-h-[100vh] flex-col bg-gray-100">
       <Header />
       <div className="mt-10 flex justify-center sm:px-12">
         <CreateNoteTaskBox />
       </div>
-      <Suspense fallback={<Loading />}>
+      <Suspense key={keyString} fallback={<Loading />}>
         <NotesWrapper query={query} />
       </Suspense>
     </main>

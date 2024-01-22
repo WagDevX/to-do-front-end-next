@@ -26,7 +26,7 @@ export default function Search() {
         className="block w-full rounded-sm border border-zinc-300 p-1 ps-3 text-sm text-gray-900 shadow-sm focus:border-zinc-500 focus:outline-none focus:ring-zinc-500"
         placeholder="Pesquisar Notas"
       />
-      <button className="absolute bottom-0 end-[0] rounded-lg  p-2 text-sm font-medium text-white focus:outline-none">
+      <div className="absolute bottom-0 end-[0] rounded-lg  p-2 text-sm font-medium text-white focus:outline-none">
         <svg
           width="13"
           height="14"
@@ -39,7 +39,7 @@ export default function Search() {
             fill="#9E9E9E"
           />
         </svg>
-      </button>
+      </div>
     </div>
   );
 }

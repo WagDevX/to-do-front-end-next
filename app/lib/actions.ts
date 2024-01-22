@@ -27,7 +27,7 @@ const EditNote = FormSchema.omit({
   updatedAt: true,
 });
 
-export default async function createNote(formData: FormData) {
+export async function createNote(formData: FormData) {
   // eslint-disable-next-line no-unused-vars
   const { title, description, color } = CreateNote.parse({
     title: formData.get("title"),

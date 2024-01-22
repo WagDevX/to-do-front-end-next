@@ -3,8 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import Note from "./models/note";
-import mongooseConnect from "./database/mongoose";
 import { NoteType } from "./definitions";
+import setupMongoDb from "./database/mongoose";
 
 const FormSchema = z.object({
   id: z.string(),
@@ -35,7 +35,7 @@ export async function createNote(formData: FormData, isFavorited: boolean) {
     color: "",
   });
   try {
-    await mongooseConnect();
+    await setupMongoDb();
 
     await Note.create({
       title: title,
@@ -64,7 +64,7 @@ export async function editNote(formData: FormData) {
   });
 
   try {
-    await mongooseConnect();
+    await setupMongoDb();
     await Note.updateOne(
       { _id: id },
       {
@@ -87,7 +87,7 @@ export async function editNote(formData: FormData) {
 export async function getFilteredNotes(query: string, color: string) {
   try {
     let response;
-    await mongooseConnect();
+    await setupMongoDb();
     if (query || color) {
       if (color) {
         response = await Note.find({
@@ -112,7 +112,7 @@ export async function getFilteredNotes(query: string, color: string) {
 
 export async function deleteNote(_id: string) {
   try {
-    await mongooseConnect();
+    await setupMongoDb();
     await Note.findOneAndDelete({ _id: _id });
   } catch (error) {
     console.log(error);
@@ -125,7 +125,7 @@ export async function deleteNote(_id: string) {
 export async function favoriteNote(_id: string, favorite: boolean) {
   try {
     console;
-    await mongooseConnect();
+    await setupMongoDb();
     await Note.updateOne({ _id: _id }, { favorited: favorite });
   } catch (error) {
     console.log(error);
@@ -138,7 +138,7 @@ export async function favoriteNote(_id: string, favorite: boolean) {
 export async function setColor(_id: string, color: string) {
   try {
     console;
-    await mongooseConnect();
+    await setupMongoDb();
     await Note.updateOne({ _id: _id }, { color: color });
   } catch (error) {
     console.log(error);

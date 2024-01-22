@@ -23,10 +23,6 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^14.1.2",
-    "@testing-library/user-event": "^14.5.2",
-    "@types/jest": "^29.5.11",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -37,13 +33,8 @@
     "eslint-config-standart": "^0.2.0",
     "eslint-plugin-jest-dom": "^5.1.0",
     "eslint-plugin-tailwindcss": "^3.14.0",
-    "eslint-plugin-testing-library": "^6.2.0",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "postcss": "^8.4.33",
     "prettier": "^3.2.4",
     "tailwindcss": "^3.3.0",
-    "ts-jest": "^29.1.1",
     "typescript": "^5"
   }
 }

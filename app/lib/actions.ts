@@ -86,7 +86,6 @@ export async function editNote(formData: FormData) {
 
 export async function getFilteredNotes(query: string, color: string) {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 3000));
     let response;
     await setupMongoDb();
     if (query || color) {

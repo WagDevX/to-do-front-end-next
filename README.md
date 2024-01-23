@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fullstack To-Do App with Next.js 14 and ServerActions
 
-## Getting Started
+## Introduction
 
-First, run the development server:
+### Project Overview
+
+- Fullstack To-Do App
+- Built with Next.js 14
+- Leveraging ServerActions for enhanced functionality
+
+![1](https://i.ibb.co/bQZHt6m/desafio-Core-Note-Print3.png)
+![2](https://i.ibb.co/PCkT4QQ/desafio-Core-Note-Print4.png)
+
+## Next.js 14
+
+### Key Features
+
+- Improved Performance
+- Faster Builds
+- Enhanced Development Experience
+- Optimal Server Components Support
+- Seamless Integration with ServerActions
+
+## Advantages of Next.js
+
+### React Framework
+
+- React-based architecture for efficient UI development.
+- Component-based structure for modularity and reusability.
+
+### Server-Side Rendering (SSR)
+
+- Faster page loads and improved SEO.
+- Enhanced user experience with server-rendered content.
+
+## Vercel Deployment
+
+### Why Vercel?
+
+- Effortless Deployment
+- Serverless Architecture
+- Global CDN for Fast Content Delivery
+- Seamless Integration with Next.js
+
+## Vercel Features
+
+### Instant Deployments
+
+- Automatic deployment upon code changes.
+- No manual intervention required for updates.
+
+### Serverless Functions
+
+- Utilize serverless functions for backend logic.
+- Scalable and cost-effective solutions.
+
+## ServerActions Integration
+
+### What is ServerActions?
+
+- Middleware for Next.js to handle server-side actions.
+- Enables clean separation of frontend and backend logic.
+- Easily integrates with the Vercel serverless functions.
+
+## Slide Advantages of ServerActions
+
+### Scalability
+
+- Efficient handling of server-side logic.
+- Scales seamlessly with increasing load.
+
+### Code Organization
+
+- Clean and modular code organization.
+- Separation of concerns for better maintainability.
+
+## Project Demo
+
+### Walkthrough of Fullstack To-Do App
+
+- Demonstration of Next.js components.
+- ServerActions in action for backend functionality.
+- Vercel deployment and live interaction.
+- [Link](https://to-do-front-end-next.vercel.app/)
+
+## Conclusion
+
+### Recap of Benefits
+
+- Next.js 14 for enhanced performance and development.
+- Vercel for seamless deployment and global reach.
+- ServerActions for efficient server-side logic.
+
+## Screenshots
+
+# Loading Screen
+
+![Screenshot 1](https://i.ibb.co/zb1NNcP/localhost-3000-2.png)
+
+# Mobile Screen
+
+![Screenshot 1](https://i.ibb.co/M9bK3p1/localhost-3000-i-Phone-12-Pro.png)
+
+# Desktop Screen
+
+![Screenshot 1](https://i.ibb.co/QQkrZ9K/localhost-3000-1.png)
+
+## Envirnoment Variables
+
+To be able to run this project locally you need to add the following variable to .env
+
+`MONGODB_URI`
+
+## Running locally
+
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/WagDevX/to-do-fullstack-next14.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+run locally
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+  npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+or run with Docker
 
-## Learn More
+```bash
+  docker build -t container-name .
+```
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+  docker run -d -p 3000:3000 container-name
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔗 Get in touch
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/wagner-de-araujo-7b2854118/)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+waggt@hotmail.com
